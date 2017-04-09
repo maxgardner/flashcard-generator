@@ -1,4 +1,7 @@
 let ClozeCard = function(text, cloze) {
+	if (!(this instanceof ClozeCard)) { 
+		return new ClozeCard(front, back);
+	} 
 	this.text = text;
 	this.cloze = cloze;
 }
@@ -15,8 +18,12 @@ ClozeCard.prototype.showHint = function() {
 	console.log("..." + this.text);
 };
 
-ClozeCard.prototype.wrong = function() {
-	console.log("Sorry, that's wrong. Try again.");
+ClozeCard.prototype.checkAnswer = function(guess) {
+	if (guess === this.cloze) {
+		console.log("Ayyy, turn up, you got it right!")
+	} else {
+		console.log("Nope. Try again.");
+	}
 };
 
 module.exports = ClozeCard;
